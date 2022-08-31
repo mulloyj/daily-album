@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { unstable_getServerSession as getServerSession } from "next-auth";
 import { getSearchResults, getNewAccessToken } from "../../utils/spotifyEndPoints";
-import { prisma } from "../../server/db/client"
+import { prisma } from "../../server/db/client";
 import { authOptions as nextAuthOptions } from "./auth/[...nextauth]";
 import { isValidToken } from "../../utils/isValidToken";
 
