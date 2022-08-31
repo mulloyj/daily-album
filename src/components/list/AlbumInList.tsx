@@ -1,4 +1,5 @@
 import { Album as AlbumType } from "@prisma/client";
+import Link from "next/link";
 import React, { useState } from "react";
 
 import Album from "../Album";
@@ -15,10 +16,12 @@ const AlbumInList = React.forwardRef(({ album }: { album: AlbumType }) => {
   };
 
   return (
-    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      {album.title}
-      {showAlbum ? <Album album={album} /> : ""}
-    </div>
+    <Link href={`/albums/${album.artist}/${album.title}`}>
+      <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        {album.title}
+        {showAlbum ? <Album album={album} /> : ""}
+      </div>
+    </Link>
   );
 });
 
