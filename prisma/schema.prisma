@@ -65,7 +65,7 @@ model Album {
 }
 
 model listenedTo {
-    Album       Album    @relation(fields: [albumTitle, albumArtist], references: [title, artist])
+    album       Album    @relation(fields: [albumTitle, albumArtist], references: [title, artist])
     albumTitle  String
     albumArtist String
     date        DateTime @id @unique @default(now()) @db.Timestamp(3)
