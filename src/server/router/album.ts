@@ -11,6 +11,21 @@ export const albumRouter = createRouter()
     async resolve({ ctx }) {
       return await ctx.prisma.album.findMany();
     },
+  }).query("getByNameAndArtist", {
+    input: z.object({
+      title: z.string(),
+      artist: z.string(),
+    }),
+    async resolve({ctx, input}) {
+      return await ctx.prisma.album.findUnique({
+        where: {
+          title_artist: {
+            title: input.title,
+            artist: input.artist,
+          }
+        }
+      });
+    },
   }).mutation("addAlbum", {
     input: z.object({
       title: z.string(),
