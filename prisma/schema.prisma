@@ -55,10 +55,20 @@ model VerificationToken {
 }
 
 model Album {
-    title  String
-    artist String
-    image  String
-    link   String
+    title      String
+    artist     String
+    image      String
+    link       String
+    listenedTo listenedTo[]
 
     @@unique([title, artist])
+}
+
+model listenedTo {
+    Album       Album     @relation(fields: [albumTitle, albumArtist], references: [title, artist])
+    albumTitle  String
+    albumArtist String
+    date        DateTime?
+
+    @@unique([albumTitle, albumArtist])
 }
