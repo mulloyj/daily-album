@@ -4,7 +4,18 @@ import { z } from "zod";
 export const albumRouter = createRouter()
   .query("getCurrent", {
     async resolve({ctx}) {
-      return await ctx.prisma.album.findFirst();
+      const todayDate = new Date();
+      const today = todayDate.toISOString().split('T')[0];
+      
+      return await ctx.prisma.listenedTo.findFirst({
+        where: {
+            date: today,
+        },
+        select: {
+          date: false,
+          Album: true,
+        }
+      });
     },
   })
   .query("getAll", {
