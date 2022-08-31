@@ -25,7 +25,7 @@ function Current() {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-auto flex-col items-center justify-center pt-20">
+      <div className="pt-20">
         <Album album={data} />
       </div>
     </div>
