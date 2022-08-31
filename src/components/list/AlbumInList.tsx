@@ -16,10 +16,28 @@ const AlbumInList = React.forwardRef(({ album }: { album: AlbumType }) => {
   };
 
   return (
-    <Link href={`/albums/${album.artist}/${album.title}`}>
-      <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        {album.title}
-        {showAlbum ? <Album album={album} /> : ""}
+    <Link
+      href={`/albums/${encodeURIComponent(album.artist)}/${encodeURIComponent(
+        album.title
+      )}`}
+    >
+      <div
+        className="pt-1"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="grid gap-1 border rounded">
+          {showAlbum ? (
+            <div className="flex w-full max-w-md p-5">
+              <Album album={album} />
+            </div>
+          ) : (
+            <div className="pl-5">
+              <div className="text-3xl">{album.title}</div>
+              <div className="text-2xl p-1">{album.artist}</div>
+            </div>
+          )}
+        </div>
       </div>
     </Link>
   );

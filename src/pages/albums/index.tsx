@@ -25,9 +25,11 @@ function AlbumList() {
   return (
     <div>
       <Navbar />
-      {data.map((album) => {
-        return <AlbumInList album={album} />;
-      })}
+      <div className="p-4">
+        {data.map((album) => {
+          return <AlbumInList album={album} />;
+        })}
+      </div>
     </div>
   );
 }
