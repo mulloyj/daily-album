@@ -54,4 +54,23 @@ export const albumRouter = createRouter()
         }
       })
     }
+  }).mutation("updateCurrent", {
+    input: z.object({
+      title: z.string(),
+      artist: z.string(),
+    }),
+    async resolve({ input, ctx }) {
+      return await ctx.prisma.listenedTo.create({
+        data: {
+          Album: {
+            connect: {
+              title_artist: {
+                title: input.title,
+                artist: input.artist,
+              }
+            }
+          }
+        }
+      })
+    }
   });
