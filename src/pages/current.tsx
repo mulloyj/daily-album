@@ -6,7 +6,7 @@ import { trpc } from "../utils/trpc";
 function Current() {
   const { data, isLoading } = trpc.useQuery(["album.getCurrent"]);
 
-  if (data === null || data === undefined) {
+  if (!data) {
     return (
       <div>
         <Navbar />
@@ -26,7 +26,7 @@ function Current() {
     <div>
       <Navbar />
       <div className="pt-20">
-        <Album album={data} />
+        <Album album={data.Album} />
       </div>
     </div>
   );

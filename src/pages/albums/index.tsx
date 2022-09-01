@@ -6,6 +6,8 @@ import { trpc } from "../../utils/trpc";
 function AlbumList() {
   const { data, isLoading } = trpc.useQuery(["album.getAll"]);
 
+  console.log(data);
+
   if (data === null || data === undefined) {
     return (
       <div>
