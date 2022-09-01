@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import { trpc } from "../utils/trpc";
 
 function Current() {
-  const { data, isLoading } = trpc.useQuery(["album.getCurrent"]);
+  let { data, isLoading } = trpc.useQuery(["album.updateCurrent"]);
 
   if (!data) {
     return (

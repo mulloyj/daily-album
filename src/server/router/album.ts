@@ -58,6 +58,24 @@ export const albumRouter = createRouter()
     }
   }).query("updateCurrent", {
     async resolve({ ctx }) {
+      const today = new Date();
+      const offset = today.getTimezoneOffset(); // today is currently in UTC, need it in users time zone
+      today.setHours(- offset / 60,0,0,0); // fix to get the date in the right format
+
+      const current = await ctx.prisma.listenedTo.findFirst({
+        where: {
+          date: today,
+        },
+        select: {
+          date: false,
+          Album: true,
+        }
+      });
+
+      if (current) {
+        return current;
+      }
+
       const notListenedTo = await ctx.prisma.album.findMany({
         where: {
           listenedTo: undefined,
@@ -73,10 +91,6 @@ export const albumRouter = createRouter()
         })
       }
 
-      const today = new Date();
-      const offset = today.getTimezoneOffset(); // today is currently in UTC, need it in users time zone
-      today.setTime(today.getTime() - offset * 60 * 1000);
-
       return await ctx.prisma.listenedTo.create({
         data: {
           date: today,
@@ -88,6 +102,10 @@ export const albumRouter = createRouter()
               }
             }
           }
+        },
+        select: {
+          date: false,
+          Album: true,
         }
       })
     }
