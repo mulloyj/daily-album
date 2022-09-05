@@ -26,7 +26,7 @@ function Current() {
     <div>
       <Navbar />
       <div className="pt-20">
-        <Album album={data.Album} />
+        <Album album={data.album} />
       </div>
     </div>
   );

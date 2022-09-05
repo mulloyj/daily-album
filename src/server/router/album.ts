@@ -15,7 +15,7 @@ export const albumRouter = createRouter()
         },
         select: {
           date: false,
-          Album: true,
+          album: true,
         }
       });
     },
@@ -68,7 +68,7 @@ export const albumRouter = createRouter()
         },
         select: {
           date: false,
-          Album: true,
+          album: true,
         }
       });
 
@@ -94,7 +94,7 @@ export const albumRouter = createRouter()
       return await ctx.prisma.listenedTo.create({
         data: {
           date: today,
-          Album: {
+          album: {
             connect: {
               title_artist: {
                 title: choice.title,
@@ -105,7 +105,7 @@ export const albumRouter = createRouter()
         },
         select: {
           date: false,
-          Album: true,
+          album: true,
         }
       })
     }
