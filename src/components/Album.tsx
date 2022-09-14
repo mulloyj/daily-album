@@ -17,4 +17,6 @@ const Album = React.forwardRef(({ album }: { album: Album }) => {
   );
 });
 
+Album.displayName = "Album";
+
 export default Album;

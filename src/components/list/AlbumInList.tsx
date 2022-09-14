@@ -43,4 +43,6 @@ const AlbumInList = React.forwardRef(({ album }: { album: AlbumType }) => {
   );
 });
 
+AlbumInList.displayName = "AlbumInList";
+
 export default AlbumInList;

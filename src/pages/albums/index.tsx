@@ -29,7 +29,9 @@ function AlbumList() {
       <Navbar />
       <div className="p-4">
         {data.map((album) => {
-          return <AlbumInList album={album} />;
+          return (
+            <AlbumInList key={`${album.title} ${album.artist}`} album={album} />
+          );
         })}
       </div>
     </div>
