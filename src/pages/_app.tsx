@@ -19,10 +19,14 @@ const MyApp: AppType = ({
       <Head>
         <title>Album-a-Day</title>
       </Head>
-      <Navbar />
-      <Component {...pageProps} />
-      <div className="fixed inset-x-0 bottom-0">
-        <Footer />
+      <div className="min-h-screen">
+        <Navbar />
+        <div className="grow">
+          <Component {...pageProps} />
+        </div>
+        <div className="sticky top-[100vh]">
+          <Footer />
+        </div>
       </div>
     </SessionProvider>
   );
