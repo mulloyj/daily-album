@@ -3,7 +3,6 @@ import Album from "../../../components/Album";
 import { useRouter } from "next/router";
 import { trpc } from "../../../utils/trpc";
 import { ParsedUrlQuery } from "querystring";
-import Navbar from "../../../components/Navbar";
 import Link from "next/link";
 
 type ExpectedQuery = {
@@ -31,7 +30,6 @@ const AlbumByTitleAndArtist = () => {
 
   return (
     <>
-      <Navbar />
       {data ? (
         <div className="pt-20">
           <Album album={data} />

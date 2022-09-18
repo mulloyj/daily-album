@@ -5,6 +5,10 @@ import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
+import Head from "next/head";
+
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MyApp: AppType = ({
   Component,
@@ -12,7 +16,14 @@ const MyApp: AppType = ({
 }) => {
   return (
     <SessionProvider session={session}>
+      <Head>
+        <title>Album-a-Day</title>
+      </Head>
+      <Navbar />
       <Component {...pageProps} />
+      <div className="fixed inset-x-0 bottom-0">
+        <Footer />
+      </div>
     </SessionProvider>
   );
 };

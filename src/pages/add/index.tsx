@@ -2,7 +2,6 @@ import { useSession, signIn } from "next-auth/react";
 import { FormEvent } from "react";
 import { Album } from "@prisma/client";
 
-import Navbar from "../../components/Navbar";
 import Search from "../../components/add/Search";
 import AlbumGridComponent from "../../components/add/AlbumGridComponent";
 import { SearchContext } from "../../context/SearchContext";
@@ -47,7 +46,6 @@ function Add<FunctionComponent>() {
     return (
       <>
         <div>
-          <Navbar />
           <SearchContext.Provider value={{ submitSearch }}>
             <div className="pt-3 w-1/2 m-auto items-center jusify-center">
               <Search />
@@ -78,7 +76,6 @@ function Add<FunctionComponent>() {
 
   return (
     <div>
-      <Navbar />
       <div className="flex flex-auto flex-col items-center justify-center">
         You need to be logged in to add an Album
         <button

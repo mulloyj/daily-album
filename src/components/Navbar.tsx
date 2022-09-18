@@ -5,7 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const main_nav =
   "lg-inline-flex lg:w-auto w-full px-3 py-2 text-lg rounded text-white font-bold items-center justify-center hover:bg-lime-600";
 const back_nav =
-  "lg-inline-flex lg:w-auto w-full px-3 py-2 text-lg rounded text-white font-bold items-center justify-center bg-lime-600 hover:bg-lime-700 mr-1";
+  "lg-inline-flex lg:w-auto w-full px-3 py-2 text-lg rounded text-white font-bold items-center justify-center lg:bg-lime-600 hover:bg-lime-700 mr-1 text-left";
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
@@ -70,9 +70,6 @@ export default function Navbar() {
                 Login
               </button>
             )}
-            <Link href="/">
-              <a className={back_nav}>About</a>
-            </Link>
           </>
         </div>
       </div>
