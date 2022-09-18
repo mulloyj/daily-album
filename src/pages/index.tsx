@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import AlbumList from "./albums";
 import Current from "./current";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -14,9 +15,9 @@ const Home: NextPage = () => {
 
         <div className="pt-10 text-xl">
           To add an album, go to{" "}
-          <a href="/add" className="hover:underline">
-            Add an Album
-          </a>
+          <Link href="/add">
+            <a className="hover:underline">Add an Album</a>
+          </Link>
           .
         </div>
 
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
         </ul>
       </div>
       <div className="border p-2 text-3xl">
-        Today's Album:
+        Today&apos;s Album:
         <Current />
       </div>
       <div className="border p-2">
