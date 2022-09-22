@@ -52,4 +52,6 @@ const AlbumList = React.forwardRef(
   }
 );
 
+AlbumList.displayName = "AlbumList";
+
 export default AlbumList;
