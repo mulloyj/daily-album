@@ -14,7 +14,6 @@ export const albumRouter = createRouter()
             date: today,
         },
         select: {
-          date: false,
           album: true,
         }
       });
@@ -24,7 +23,33 @@ export const albumRouter = createRouter()
     async resolve({ ctx }) {
       return await ctx.prisma.album.findMany();
     },
-  }).query("getByNameAndArtist", {
+  })
+  .query("getRecent", {
+    async resolve({ctx}) {
+      const today = new Date();
+      const offset = today.getTimezoneOffset(); // today is currently in UTC, need it in users time zone
+      today.setHours(- offset / 60,0,0,0); // fix to get the date in the right format
+
+      const yesterday = new Date(today.getDate() - 1);
+      const fiveDaysAgo = new Date(today.getDate() - 3);
+
+      let result = await ctx.prisma.listenedTo.findMany({
+        where: {
+          date: {
+            lte: yesterday,
+            gte: fiveDaysAgo,
+          }
+        },
+        select: {
+          date: false,
+          album: true,
+        }
+      });
+
+      return result.map(album => album.album);
+    }
+  })
+  .query("getByNameAndArtist", {
     input: z.object({
       title: z.string(),
       artist: z.string(),
@@ -39,7 +64,8 @@ export const albumRouter = createRouter()
         }
       });
     },
-  }).mutation("addAlbum", {
+  })
+  .mutation("addAlbum", {
     input: z.object({
       title: z.string(),
       artist: z.string(),
@@ -56,7 +82,8 @@ export const albumRouter = createRouter()
         }
       })
     }
-  }).query("updateCurrent", {
+  })
+  .query("updateCurrent", {
     async resolve({ ctx }) {
       const today = new Date();
       const offset = today.getTimezoneOffset(); // today is currently in UTC, need it in users time zone

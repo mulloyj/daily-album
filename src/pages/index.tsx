@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
-import AlbumList from "./albums";
+import List from "./albums";
 import Current from "./current";
 import Link from "next/link";
+import AlbumList from "./albums/AlbumList";
 
 const Home: NextPage = () => {
   return (
@@ -35,7 +36,8 @@ const Home: NextPage = () => {
       </div>
       <div className="border p-2">
         <div className="text-3xl">Recently Listened:</div>
-        <AlbumList />
+        <AlbumList sortMethod={0} />{" "}
+        {/* Sort Method 0 only shows most recent albums*/}
       </div>
     </div>
   );
