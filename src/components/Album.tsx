@@ -11,7 +11,7 @@ const Album = React.forwardRef(({ album }: { album: Album }) => {
       <h1 className="text-3xl">{album.title}</h1>
       <h2 className="text-2xl p-1">{album.artist}</h2>
       <Link href={album.link}>
-        <Image src={album.image} height={640} width={640} />
+        <Image src={album.image} height={640} width={640} alt={album.title} />
       </Link>
     </div>
   );
