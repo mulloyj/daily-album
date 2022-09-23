@@ -38,17 +38,12 @@ const AlbumList = React.forwardRef(
     }
 
     return (
-      <div>
-        <div className="p-4">
-          {data.map((album) => {
-            return (
-              <AlbumInList
-                key={`${album.title} ${album.artist}`}
-                album={album}
-              />
-            );
-          })}
-        </div>
+      <div className="p-4">
+        {data.map((album) => {
+          return (
+            <AlbumInList key={`${album.title} ${album.artist}`} album={album} />
+          );
+        })}
       </div>
     );
   }
