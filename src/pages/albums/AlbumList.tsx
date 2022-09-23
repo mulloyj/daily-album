@@ -29,6 +29,8 @@ const AlbumList = React.forwardRef(
 
     const { data, isLoading } = trpc.useQuery([query]);
 
+    console.log(data);
+
     if (data === null || data === undefined) {
       return <div>There are no albums</div>;
     } else if (isLoading) {

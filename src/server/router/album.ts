@@ -30,13 +30,12 @@ export const albumRouter = createRouter()
       const offset = today.getTimezoneOffset(); // today is currently in UTC, need it in users time zone
       today.setHours(- offset / 60,0,0,0); // fix to get the date in the right format
 
-      const yesterday = new Date(today.getDate() - 1);
-      const fiveDaysAgo = new Date(today.getDate() - 3);
+      const fiveDaysAgo = new Date(today.getDate() - 5);
 
       let result = await ctx.prisma.listenedTo.findMany({
         where: {
           date: {
-            lte: yesterday,
+            lt: today,
             gte: fiveDaysAgo,
           }
         },

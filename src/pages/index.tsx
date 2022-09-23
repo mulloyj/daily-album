@@ -36,7 +36,7 @@ const Home: NextPage = () => {
       </div>
       <div className="border p-2">
         <div className="text-3xl">Recently Listened:</div>
-        <AlbumList sortMethod={0} />{" "}
+        <AlbumList sortMethod={0} />
         {/* Sort Method 0 only shows most recent albums*/}
       </div>
     </div>
